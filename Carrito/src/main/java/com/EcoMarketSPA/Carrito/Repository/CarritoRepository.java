@@ -7,7 +7,7 @@ import com.EcoMarketSPA.Carrito.Model.Carrito;
 
 @Repository
 public interface CarritoRepository extends JpaRepository<Carrito, Integer>{
-    Carrito findByUsuarioId(int usuarioId);
+    Carrito findByUsuarioId(Integer usuarioId);
     Carrito findByEstado(String estado);
     
 }

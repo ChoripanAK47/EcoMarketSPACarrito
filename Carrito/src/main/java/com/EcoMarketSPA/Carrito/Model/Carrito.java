@@ -22,7 +22,7 @@ public class Carrito {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(unique = true, nullable = false)
-    private int usuarioId;
+    private Integer usuarioId;
     @Column(nullable = false)
     private double total;
     @Column(nullable = false)
