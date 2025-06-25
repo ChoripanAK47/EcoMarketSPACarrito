@@ -1,10 +1,13 @@
-package com.EcoMarketSPA.CarritoItem.Repository;
+package com.EcoMarketSPA.Carrito.Repository;
 
-import com.EcoMarketSPA.CarritoItem.Model.CarritoItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import com.EcoMarketSPA.Carrito.Model.CarritoItem;
+
 @Repository
 public interface CarritoItemRepository extends JpaRepository<CarritoItem, Integer> {
-    
+    CarritoItem findByidProducto(Integer idProducto);
+    CarritoItem findByCantidad(Integer cantidad);
+    CarritoItem findByPrecio(Double precio);
 }

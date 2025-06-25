@@ -56,7 +56,7 @@ public class CarritoController {
             if (carritoExistente == null) {
                 return ResponseEntity.notFound().build();
             }
-            carrito.setId(idCarrito);
+            carrito.setIdCarrito(idCarrito);
             Carrito carritoActualizado = carritoService.save(carrito);
             return ResponseEntity.ok(carritoActualizado);
         } catch (Exception e) {

@@ -1,6 +1,7 @@
 package com.EcoMarketSPA.Carrito.Controller;
 
 import com.EcoMarketSPA.Carrito.Model.CarritoItem;
+import com.EcoMarketSPA.Carrito.Service.CarritoItemService;
 import com.EcoMarketSPA.Carrito.Service.CarritoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +15,7 @@ import java.util.List;
 public class CarritoItemController {
 
     @Autowired
-    private CarritoService carritoItemService;
+    private CarritoItemService carritoItemService;
 
     // Listar todos los items
     @GetMapping
@@ -50,9 +51,9 @@ public class CarritoItemController {
         if (existente == null) {
             return ResponseEntity.notFound().build();
         }
-        existente.setProductoId(carritoItem.getProductoId());
+        existente.setIdProducto(carritoItem.getIdProducto());
         existente.setCantidad(carritoItem.getCantidad());
-        existente.setPrecioUnitario(carritoItem.getPrecioUnitario());
+        existente.setPrecio(carritoItem.getPrecio());
         // El subtotal se calcula dinámicamente, no es necesario actualizarlo manualmente
         CarritoItem actualizado = carritoItemService.save(existente);
         return ResponseEntity.ok(actualizado);

@@ -1,7 +1,7 @@
-package com.EcoMarketSPA.CarritoItem.Service;
+package com.EcoMarketSPA.Carrito.Service;
 
-import com.EcoMarketSPA.CarritoItem.Model.CarritoItem;
-import com.EcoMarketSPA.CarritoItem.Repository.CarritoItemRepository;
+import com.EcoMarketSPA.Carrito.Model.CarritoItem;
+import com.EcoMarketSPA.Carrito.Repository.CarritoItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
