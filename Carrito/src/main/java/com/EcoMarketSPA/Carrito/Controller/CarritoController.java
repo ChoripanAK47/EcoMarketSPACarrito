@@ -17,14 +17,19 @@ import org.springframework.web.bind.annotation.RestController;
 import com.EcoMarketSPA.Carrito.Model.Carrito;
 import com.EcoMarketSPA.Carrito.Service.CarritoService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
 @RequestMapping("/api/v1/carrito")
+@Tag(name = "Carrito", description = "Operaciones relacionadas con el carrito de compras")
 public class CarritoController {
 
     @Autowired
     private CarritoService carritoService;
     
     @GetMapping
+    @Operation(summary = "Listar todos los carritos", description = "Obtiene una lista de todos los carritos de compras")
     public ResponseEntity<List<Carrito>> listarCarritos() {
         List<Carrito> carritos = carritoService.findAll();
         if (carritos.isEmpty()) {

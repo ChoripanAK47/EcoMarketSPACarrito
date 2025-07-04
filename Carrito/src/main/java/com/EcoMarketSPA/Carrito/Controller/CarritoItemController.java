@@ -3,6 +3,11 @@ package com.EcoMarketSPA.Carrito.Controller;
 import com.EcoMarketSPA.Carrito.Model.CarritoItem;
 import com.EcoMarketSPA.Carrito.Service.CarritoItemService;
 import com.EcoMarketSPA.Carrito.Service.CarritoService;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
@@ -12,6 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/carrito-items")
+@Tag(name = "Carrito Items", description = "Operaciones relacionadas con los items del carrito de compras")
 public class CarritoItemController {
 
     @Autowired
@@ -19,6 +25,8 @@ public class CarritoItemController {
 
     // Listar todos los items
     @GetMapping
+    @Operation(summary = "Listar todos los items del carrito", description = "Obtiene una lista de todos los items en el carrito de compras")
+    @ApiResponse(responseCode = "200", description = "Lista de items obtenida exitosamente")
     public ResponseEntity<List<CarritoItem>> listar() {
         List<CarritoItem> items = carritoItemService.findAll();
         if (items.isEmpty()) {

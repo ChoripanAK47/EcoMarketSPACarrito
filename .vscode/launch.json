@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "EcoMarketSpaCarritoApplication",
+            "request": "launch",
+            "mainClass": "com.EcoMarketSPA.Carrito.EcoMarketSpaCarritoApplication",
+            "projectName": "Usuario"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-EcoMarketSpaCarritoApplication<Carrito>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.EcoMarketSPA.Carrito.EcoMarketSpaCarritoApplication",
+            "projectName": "CarritoECOMARKETSPA",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
