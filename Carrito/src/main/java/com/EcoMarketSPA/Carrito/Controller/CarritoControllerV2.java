@@ -55,7 +55,7 @@ public class CarritoControllerV2 {
         CollectionModel<EntityModel<CarritoItem>> collectionModel = CollectionModel.of(itemsModel);
         return ResponseEntity.ok(collectionModel);
     }
-    
+    @Operation(summary = "Obtener todos los carritos", description = "Muestra todos los carritos de compras")
     @GetMapping(produces = MediaTypes.HAL_JSON_VALUE)
     public CollectionModel<EntityModel<Carrito>> getAllCarritos() {
         List<EntityModel<Carrito>> carritos = carritoService.findAll().stream()
@@ -65,7 +65,8 @@ public class CarritoControllerV2 {
         return CollectionModel.of(carritos,
                 linkTo(methodOn(CarritoControllerV2.class).getAllCarritos()).withSelfRel());
     }
-    
+
+    @Operation(summary = "Buscar carrito por ID", description = "Obtiene el carrito de compras asociado a un ID específico")
     @GetMapping(value = "/{idCarrito}", produces = MediaTypes.HAL_JSON_VALUE)
     public EntityModel<Carrito> getCarritoById(@PathVariable Integer idCarrito) {
         Carrito carrito = carritoService.findById(idCarrito);
@@ -81,7 +82,7 @@ public class CarritoControllerV2 {
         }
         return ResponseEntity.ok(carritos);
     }
-
+    @Operation(summary = "Operación para crear un carrito", description = "Crea un nuevo carrito de compras")
     @PostMapping(produces = MediaTypes.HAL_JSON_VALUE)
     public ResponseEntity<EntityModel<Carrito>> createCarrito(@RequestBody Carrito carrito) {
         Carrito newCarrito = carritoService.save(carrito);
@@ -89,7 +90,7 @@ public class CarritoControllerV2 {
                 .created(linkTo(methodOn(CarritoControllerV2.class).getCarritoById(newCarrito.getIdCarrito())).toUri())
                 .body(assembler.toModel(newCarrito));
     }
-
+    @Operation(summary = "Operación para actualizar un carrito", description = "Actualiza un carrito de compras existente")
     @PutMapping(value = "/{idCarrito}", produces = MediaTypes.HAL_JSON_VALUE)
     public ResponseEntity<EntityModel<Carrito>> updateCarrito(@PathVariable Integer idCarrito, @RequestBody Carrito carrito) {
         carrito.setIdCarrito(idCarrito);
@@ -97,7 +98,7 @@ public class CarritoControllerV2 {
         return ResponseEntity
                 .ok(assembler.toModel(updatedCarrito));
     }
-
+    @Operation(summary = "Operación para eliminar un carrito", description = "Elimina un carrito de compras existente")
     @DeleteMapping(value = "/{idCarrito}", produces = MediaTypes.HAL_JSON_VALUE)
     public ResponseEntity<?> deleteCarrito(@PathVariable Integer idCarrito) {
         carritoService.delete(idCarrito);
